@@ -14,3 +14,10 @@ To view and run notebook, we can manually install `ipykernel`. This is not alway
 ## Deployment
 This project is build for container deployment.
 Once ready to deploy, use `.env.sample` file to create a `.env` file and user the `Docker-compose` file to build a container.
+
+## Enhancement
+
+The project is just a minimal example of how the Wiki data can be processed into a application running on production. We can further improve this in my way, let's name a few:
+
+- Create a frontend to have better user experience of managing the tasks
+- Use a more mature tool for scheduling jobs like Airflow, Celery, etc.
