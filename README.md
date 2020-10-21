@@ -9,6 +9,7 @@ Expose the data two a few endpoints with Django and Django Rest Framework.
 
 ## Development
 Once installed Docker, start the project with VS Code inside the pre-defined containers with `./devcontainer`
+To view and run notebook, we can manually install `ipykernel`. This is not always needed so we don't need to include it in the build.
 
 ## Deployment
 This project is build for container deployment.
