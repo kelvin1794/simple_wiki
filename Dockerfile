@@ -6,7 +6,8 @@ ENV UWSGI_INI uwsgi.ini
 WORKDIR /app
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends default-mysql-client
+    && apt-get -y install --no-install-recommends default-mysql-client \
+    && apt-get install -y ca-certificates
 
 # Using pip:
 COPY requirements.txt /app
