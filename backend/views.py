@@ -32,6 +32,7 @@ class QueryView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
         else:
+            cursor.execute(query)
             data = dictfetchall(cursor)
             return Response(data)
 
