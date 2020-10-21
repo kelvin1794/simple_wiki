@@ -1,0 +1,11 @@
+requests
+beautifulsoup4
+pandas
+Keras
+tensorflow
+mwparserfromhell
+Django
+djangorestframework
+mysqlclient
+django-background-tasks
+python-telegram-bot
