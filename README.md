@@ -6,6 +6,7 @@ Expose the data two a few endpoints with Django and Django Rest Framework.
 
 ## Installation
 - Docker
+- VS Code with Remote Container extension
 
 ## Development
 Once installed Docker, start the project with VS Code inside the pre-defined containers with `./devcontainer`
