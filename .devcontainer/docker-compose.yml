@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        # [Choice] Python version: 3, 3.8, 3.7, 3.6
+        VARIANT: 3.8
+        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
+        USER_UID: 1000
+        USER_GID: 1000
+
+    volumes:
+      - ..:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Runs app on the same network as the databa se container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+
+    # Uncomment the next line to use a non-root user for all processes.
+    # user: vscode
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  db:
+    image: mysql/mysql-server:latest
+    ports:
+      - "3306:3306"
+    command: "--default-authentication-plugin=mysql_native_password"
+    restart: unless-stopped
+    volumes:
+      - my-datavolume:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+    environment:
+      # We could create a new user and grant access on startup
+      # More at: https://hub.docker.com/_/mysql
+      # For this case, we'll just stick with root
+      MYSQL_ROOT_PASSWORD: LocalPassword
+      MYSQL_DATABASE: simplewiki
+      # We allow remote connection from everywhere for our development workspace
+      # So we can talk between containers
+      MYSQL_ROOT_HOST: "%"
+
+volumes:
+  my-datavolume:
